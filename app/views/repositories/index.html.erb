@@ -15,7 +15,7 @@
 
 
 <hr>
-
+<% if @result %>
 <table class="table">
   <thead>
     <tr>
@@ -36,3 +36,13 @@
     <% end %>
   </tbody>
 </table>
+
+
+<nav>
+  <ul class="pagination justify-content-center">
+    <%= previous_link(query: params[:query], page: params[:page] || 1 ) %>
+    <%= next_link(query: params[:query], page: params[:page] || 1, max_page: @max_page_count) %>
+  </ul>
+</nav>
+
+<% end %>
