@@ -1,0 +1,38 @@
+<h1>Search page</h1>
+
+<%= form_tag(repositories_path, method: :get) do %>
+<div class="form-row align-items-center">
+  <div class="col-auto">
+    <%= text_field_tag(:query, params[:query], class: "form-control") %>
+  </div>
+  <div class="col-auto">
+    <%= submit_tag("Search", class: "btn btn-primary") %>
+
+  </div>
+</div>
+<% end %>
+
+
+
+<hr>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Stars</th>
+      <th scope="col">Open issues</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @result.each do |item| %>
+      <tr>
+        <td><%= link_to item[:name], item[:url] %></td>
+        <td><%= item[:description] %></td>
+        <td><%= item[:stars_nbr] %></td>
+        <td><%= item[:open_issues] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
