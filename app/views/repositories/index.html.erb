@@ -1,9 +1,9 @@
-<h1>Search page</h1>
+<h1 class="text-center repo-title">Repositories Search</h1>
 
-<%= form_tag(repositories_path, method: :get) do %>
+<%= form_tag(repositories_path, method: :get, class: "form-inline justify-content-center") do %>
 <div class="form-row align-items-center">
   <div class="col-auto">
-    <%= text_field_tag(:query, params[:query], class: "form-control") %>
+    <%= text_field_tag(:query, params[:query], placeholder: "Enter repository name", class: "form-control") %>
   </div>
   <div class="col-auto">
     <%= submit_tag("Search", class: "btn btn-primary") %>
@@ -15,34 +15,34 @@
 
 
 <hr>
-<% if @result %>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Description</th>
-      <th scope="col">Stars</th>
-      <th scope="col">Open issues</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @result.each do |item| %>
+<% if @repositories %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Stars</th>
+        <th scope="col">Open issues</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @repositories.each do |item| %>
       <tr>
         <td><%= link_to item[:name], item[:url] %></td>
         <td><%= item[:description] %></td>
-        <td><%= item[:stars_nbr] %></td>
-        <td><%= item[:open_issues] %></td>
+        <td><%= item[:stars_count] %></td>
+        <td><%= item[:open_issues_count] %></td>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      <% end %>
+    </tbody>
+  </table>
 
 
-<nav>
-  <ul class="pagination justify-content-center">
-    <%= previous_link(query: params[:query], page: params[:page] || 1 ) %>
-    <%= next_link(query: params[:query], page: params[:page] || 1, max_page: @max_page_count) %>
-  </ul>
-</nav>
+  <nav>
+    <ul class="pagination justify-content-center">
+      <%= previous_link(query: params[:query], page: params[:page] || 1 ) %>
+      <%= next_link(query: params[:query], page: params[:page] || 1, max_page: @page_count) %>
+    </ul>
+  </nav>
 
 <% end %>
