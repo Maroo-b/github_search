@@ -1,24 +1,9 @@
-# README
+# Github search
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple Rails app for searching Github repositories by name.
 
-Things you may want to cover:
+## Preparation
 
-* Ruby version
+1. Create a new oauth app: [link](https://github.com/settings/applications/new)
+2. Create a new .env file using .env.sample as a template.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
